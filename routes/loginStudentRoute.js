@@ -55,7 +55,7 @@ router.post('/studentlogin', (req, res) => {
     }
 
     // res.json({ name: result[0].name });
-    res.json({ name: userName });
+    res.json({ name: result[0].name });
 
   });
 });
