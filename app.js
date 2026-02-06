@@ -53,9 +53,20 @@ app.use('/api/addCoursePaymentRoute',coursePaymentRoute);
 
 
 // Serve HTML file
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+// app.get('/', (req, res) => {
+//     res.sendFile(path.join(__dirname, 'public', 'index.html'));
+// });
+
+// Health check route (IMPORTANT for Railway)
+app.get('/health', (req, res) => {
+    res.status(200).send('OK');
 });
+
+// Root route
+app.get('/', (req, res) => {
+    res.status(200).send('Orion Grid backend is running 🚀');
+});
+
 
 // SSL configuration
 // const sslServer = https.createServer(
