@@ -140,7 +140,9 @@
     document.addEventListener("DOMContentLoaded", async function () {
         try {
             // const response = await fetch("/api/fetch/getcourses");
-            const response = await fetch("https://orion-grid-production.up.railway.app/api/fetch/getcourses");
+            const response = await fetch("/api/fetch");
+
+            // const response = await fetch("https://orion-grid-production.up.railway.app/api/fetch/getcourses");
             const courses = await response.json();
             
             courses.forEach(course => {
