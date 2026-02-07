@@ -140,20 +140,36 @@
     document.addEventListener("DOMContentLoaded", async function () {
         try {
             // const response = await fetch("/api/fetch/getcourses");
-            const response = await fetch("/api/fetch");
-
+            // const response = await fetch("/api/fetch");
+            const response = await fetch("https://orion-grid-production.up.railway.app/api/fetch");
             // const response = await fetch("https://orion-grid-production.up.railway.app/api/fetch/getcourses");
             const courses = await response.json();
             
-            courses.forEach(course => {
-                a[course.branch].push({
-                    image: `/images/courses/${course.branch}/${course.id}.jpg`,
-                    title: course.title,
-                    description: course.description,
-                    price: course.price,
-                    link: course.syllabus
-                });
-            });
+            // courses.forEach(course => {
+            //     a[course.branch].push({
+            //         image: `/images/courses/${course.branch}/${course.id}.jpg`,
+            //         title: course.title,
+            //         description: course.description,
+            //         price: course.price,
+            //         link: course.syllabus
+            //     });
+            // });
+
+courses.forEach(course => {
+    const branch = course.branch.toLowerCase();
+
+    if (!a[branch]) return; // skip unknown branches
+
+    a[branch].push({
+        // image: `/images/courses/${branch}/${course.id}.jpg`,
+        image: "https://via.placeholder.com/400x250?text=Course",
+        title: course.title,
+        description: course.description,
+        price: course.price,
+        link: course.syllabus
+    });
+});
+
 
             showCourses('cse');
         } catch (error) {
