@@ -64,27 +64,41 @@ const express = require('express');
 const db = require('../config/dbConfig');
 const router = express.Router();
 
+// router.get('/', async (req, res) => {
+//   try {
+//     const sql = 'SELECT id, title, price, branch, description, syllabus FROM courses';
+
+//     const [results] = await db.promise().query(sql);
+
+//     const courses = results.map(course => ({
+//       id: course.id,
+//       title: course.title,
+//       price: course.price,
+//       branch: course.branch,
+//       description: course.description,
+//       syllabus: course.syllabus,
+//       image: `/images/courses/${course.branch}/${course.id}.jpg`
+//     }));
+
+//     res.json(courses);
+
+//   } catch (err) {
+//     console.error("DB ERROR:", err);
+//     res.status(500).json({ error: err.message });
+//   }
+// });
 router.get('/', async (req, res) => {
   try {
-    const sql = 'SELECT id, title, price, branch, description, syllabus FROM courses';
+    const [rows] = await db.promise().query("SELECT 1");
 
-    const [results] = await db.promise().query(sql);
-
-    const courses = results.map(course => ({
-      id: course.id,
-      title: course.title,
-      price: course.price,
-      branch: course.branch,
-      description: course.description,
-      syllabus: course.syllabus,
-      image: `/images/courses/${course.branch}/${course.id}.jpg`
-    }));
-
-    res.json(courses);
+    res.json({
+      message: "Database connection successful",
+      rows
+    });
 
   } catch (err) {
-    console.error("DB ERROR:", err);
-    res.status(500).json({ error: err.message });
+    console.log("FULL ERROR:", err);
+    res.status(500).json({ error: err });
   }
 });
 
