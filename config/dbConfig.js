@@ -126,15 +126,16 @@
 const mysql = require("mysql2");
 
 const pool = mysql.createPool({
-  host: "hopper.proxy.rlwy.net",
-  user: "root",
-  password: "HHAjHnpzXqIBvCswiYUZSmWGdydOJZe",
-  database: "railway",
-  port: 11475,
+  host: process.env.MYSQLHOST,
+  user: process.env.MYSQLUSER,
+  password: process.env.MYSQLPASSWORD,
+  database: process.env.MYSQLDATABASE,
+  port: process.env.MYSQLPORT,
   waitForConnections: true,
   connectionLimit: 10,
 });
 
-console.log("Using PUBLIC MySQL connection");
+console.log("Using INTERNAL Railway MySQL");
 
 module.exports = pool;
+
