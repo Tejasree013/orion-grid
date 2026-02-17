@@ -33,10 +33,15 @@ const router = express.Router();
 router.get('/', (req, res) => {
   const sql = 'SELECT id, title, price, branch, description, syllabus FROM courses';
   db.query(sql, (err, results) => {
+    // if (err) {
+    //   console.log("Courses table missing - skipping");
+    //   return res.json([]);
+    // }
     if (err) {
-      console.log("Courses table missing - skipping");
-      return res.json([]);
-    }
+  console.error("DB ERROR:", err);
+  return res.status(500).json({ error: err.message });
+}
+
 
     const courses = results.map(course => ({
       id: course.id,
