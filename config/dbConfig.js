@@ -106,18 +106,35 @@
 // console.log("✅ MySQL Pool Created");
 
 // module.exports = pool;
+// const mysql = require("mysql2");
+
+// const pool = mysql.createPool({
+//   host: process.env.MYSQLHOST,
+//   user: process.env.MYSQLUSER,
+//   password: process.env.MYSQLPASSWORD,
+//   database: process.env.MYSQLDATABASE,
+//   port: process.env.MYSQLPORT,
+//   waitForConnections: true,
+//   connectionLimit: 10,
+// });
+
+// console.log("Using host:", process.env.MYSQLHOST);
+
+// module.exports = pool;
+
+
 const mysql = require("mysql2");
 
 const pool = mysql.createPool({
-  host: process.env.MYSQLHOST,
-  user: process.env.MYSQLUSER,
-  password: process.env.MYSQLPASSWORD,
-  database: process.env.MYSQLDATABASE,
-  port: process.env.MYSQLPORT,
+  host: "hopper.proxy.rlwy.net",
+  user: "root",
+  password: "YOUR_MYSQL_ROOT_PASSWORD",
+  database: "railway",
+  port: 11475,
   waitForConnections: true,
   connectionLimit: 10,
 });
 
-console.log("Using host:", process.env.MYSQLHOST);
+console.log("Using PUBLIC MySQL connection");
 
 module.exports = pool;
