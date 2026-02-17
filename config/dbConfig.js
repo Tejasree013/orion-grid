@@ -128,7 +128,7 @@ const mysql = require("mysql2");
 const pool = mysql.createPool({
   host: "hopper.proxy.rlwy.net",
   user: "root",
-  password: "YOUR_MYSQL_ROOT_PASSWORD",
+  password: "HHAjHnpzXqIBvCswiYUZSmWGdydOJZe",
   database: "railway",
   port: 11475,
   waitForConnections: true,
