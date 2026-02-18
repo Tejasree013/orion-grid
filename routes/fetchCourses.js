@@ -89,17 +89,30 @@ const router = express.Router();
 // });
 router.get('/', async (req, res) => {
   try {
-    const [rows] = await db.promise().query("SELECT 1");
+    const sql = `
+      SELECT id, title, price, branch, description, syllabus 
+      FROM courses
+    `;
 
-    res.json({
-      message: "Database connection successful",
-      rows
-    });
+    const [rows] = await db.promise().query(sql);
+
+    const courses = rows.map(course => ({
+      id: course.id,
+      title: course.title,
+      price: course.price,
+      branch: course.branch,
+      description: course.description,
+      syllabus: course.syllabus,
+      image: `/images/courses/${course.branch}/${course.id}.jpg`
+    }));
+
+    res.json(courses);
 
   } catch (err) {
-    console.log("FULL ERROR:", err);
-    res.status(500).json({ error: err });
+    console.error("DB ERROR:", err);
+    res.status(500).json({ error: err.message });
   }
 });
+
 
 module.exports = router;
