@@ -134,6 +134,9 @@ const pool = mysql.createPool({
   waitForConnections: true,
   connectionLimit: 10,
 });
+console.log("HOST:", process.env.MYSQLHOST);
+console.log("PORT:", process.env.MYSQLPORT);
+
 
 console.log("Using INTERNAL Railway MySQL");
 
