@@ -123,6 +123,26 @@
 // module.exports = pool;
 
 
+// const mysql = require("mysql2");
+
+// const pool = mysql.createPool({
+//   host: process.env.MYSQLHOST,
+//   user: process.env.MYSQLUSER,
+//   password: process.env.MYSQLPASSWORD,
+//   database: process.env.MYSQLDATABASE,
+//   port: process.env.MYSQLPORT,
+//   waitForConnections: true,
+//   connectionLimit: 10,
+// });
+// console.log("HOST:", process.env.MYSQLHOST);
+// console.log("PORT:", process.env.MYSQLPORT);
+
+
+// console.log("Using INTERNAL Railway MySQL");
+
+// module.exports = pool;
+
+
 const mysql = require("mysql2");
 
 const pool = mysql.createPool({
@@ -133,12 +153,19 @@ const pool = mysql.createPool({
   port: process.env.MYSQLPORT,
   waitForConnections: true,
   connectionLimit: 10,
+  ssl: {
+    rejectUnauthorized: false
+  }
 });
-console.log("HOST:", process.env.MYSQLHOST);
-console.log("PORT:", process.env.MYSQLPORT);
 
-
-console.log("Using INTERNAL Railway MySQL");
+pool.getConnection((err, connection) => {
+  if (err) {
+    console.error("❌ DB ERROR:", err.message);
+  } else {
+    console.log("✅ DB CONNECTED SUCCESSFULLY");
+    connection.release();
+  }
+});
 
 module.exports = pool;
 
