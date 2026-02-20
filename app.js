@@ -36,6 +36,7 @@ const fileUpload = require('express-fileupload');
 
 // 🔹 IMPORT ROUTES
 const fetchCourses = require('./routes/fetchCourses');
+const fetchWorkshops = require('./routes/fetchworkshop');
 
 const app = express();
 
@@ -47,6 +48,7 @@ app.use(fileUpload());
 
 // 🔹 API ROUTES
 app.use('/api/fetch', fetchCourses);
+app.use('/api/workshop', fetchWorkshops);
 
 // 🔹 HEALTH CHECK (Railway needs this)
 app.get('/health', (req, res) => {
