@@ -36,7 +36,7 @@ const fileUpload = require('express-fileupload');
 
 // 🔹 IMPORT ROUTES
 const fetchCourses = require('./routes/fetchCourses');
-const fetchWorkshops = require('./routes/fetchworkshop');
+const fetchWorkshops = require('./routes/fetchWorkshops');
 
 const app = express();
 
