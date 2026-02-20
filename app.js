@@ -51,8 +51,11 @@ app.use('/api/fetch', fetchCourses);
 app.use('/api/workshop', fetchWorkshops);
 
 // 🔹 HEALTH CHECK (Railway needs this)
+// app.get('/health', (req, res) => {
+//   res.status(200).send('OK');
+// });
 app.get('/health', (req, res) => {
-  res.status(200).send('OK');
+  res.send('OK');
 });
 
 // 🔹 ROOT ROUTE
