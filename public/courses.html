@@ -190,7 +190,6 @@ courses.forEach(course => {
                 <p class="text-gray-600 mb-4">${course.description}</p>
                 <p class="price text-xl font-semibold text-gray-900 mb-6">${course.price}</p>
                 <div class="flex justify-between">
-                    // <a href="${course.link}" target="_blank" class="px-6 py-2 text-white blue-btn rounded-lg shadow-lg transition-transform transform hover:scale-110">Learn More</a>
                     <button onclick='openModal(${JSON.stringify(course.title)}, ${JSON.stringify(course.link)})'class="px-6 py-2 text-white blue-btn rounded-lg shadow-lg transition-transform transform hover:scale-110">Syllabus</button>
                     <button onclick='buyNow(${JSON.stringify(course)})' class="px-6 py-2 text-white red-btn rounded-lg shadow-lg transition-transform transform hover:scale-110">Buy Now</button>
                 </div>
