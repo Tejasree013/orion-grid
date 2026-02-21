@@ -30,7 +30,7 @@ const db = require('../config/dbConfig');
 const router = express.Router();
 
 router.get('/getProjects', (req, res) => {
-    const sql = 'SELECT id, projectTitle, price, branch, abstract FROM projects';
+    const sql = 'SELECT id, title, price, branch, abstract FROM projects';
 
     db.query(sql, (err, results) => {
         if (err) {
@@ -48,7 +48,7 @@ router.get('/getProjects', (req, res) => {
 
             return {
                 id: p.id,
-                title: p.projectTitle,
+                title: p.title,
                 price: p.price,
                 branch: branch,
                 abstract: p.abstract   // ✅ correct field
