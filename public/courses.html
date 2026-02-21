@@ -190,7 +190,8 @@ courses.forEach(course => {
                 <p class="text-gray-600 mb-4">${course.description}</p>
                 <p class="price text-xl font-semibold text-gray-900 mb-6">${course.price}</p>
                 <div class="flex justify-between">
-                    <a href="${course.link}" target="_blank" class="px-6 py-2 text-white blue-btn rounded-lg shadow-lg transition-transform transform hover:scale-110">Learn More</a>
+                    // <a href="${course.link}" target="_blank" class="px-6 py-2 text-white blue-btn rounded-lg shadow-lg transition-transform transform hover:scale-110">Learn More</a>
+                    <button onclick='openModal(${JSON.stringify(course.title)}, ${JSON.stringify(course.link)})'class="px-6 py-2 text-white blue-btn rounded-lg shadow-lg transition-transform transform hover:scale-110">Syllabus</button>
                     <button onclick='buyNow(${JSON.stringify(course)})' class="px-6 py-2 text-white red-btn rounded-lg shadow-lg transition-transform transform hover:scale-110">Buy Now</button>
                 </div>
             `;
@@ -202,7 +203,31 @@ courses.forEach(course => {
         sessionStorage.setItem("course", JSON.stringify(a));
         window.location.href = "./payments/apply_course.html";
     }
+
+    function openModal(title, content) {
+    document.getElementById("modalTitle").textContent = title;
+    document.getElementById("modalContent").innerHTML = content;
+    document.getElementById("courseModal").classList.remove("hidden");
+}
+
+function closeModal() {
+    document.getElementById("courseModal").classList.add("hidden");
+}
 </script>
+<!-- Course Modal -->
+<div id="courseModal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50">
+  <div class="bg-white w-11/12 md:w-2/3 lg:w-1/2 p-8 rounded-xl shadow-xl relative">
+    
+    <h2 id="modalTitle" class="text-2xl font-bold text-[#0065BD] mb-4"></h2>
+    
+    <div id="modalContent" class="text-gray-700 space-y-4"></div>
+
+    <button onclick="closeModal()" 
+      class="mt-6 bg-red-600 text-white px-6 py-2 rounded-md hover:bg-red-700">
+      Close
+    </button>
+  </div>
+</div>
 </body>
 
 </html>
