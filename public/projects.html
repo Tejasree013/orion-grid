@@ -21,7 +21,8 @@
     document.addEventListener("DOMContentLoaded", async function () {
     try {
         a={'cse':[],'ece':[],'iot':[]}
-        const response = await fetch("/api/fetchProjects/getProjects");
+        // const response = await fetch("/api/fetchProjects/getProjects");
+        const response = await fetch("/api/project/getprojects");
         const courses = await response.json();
         
         // courses.forEach(course => {
