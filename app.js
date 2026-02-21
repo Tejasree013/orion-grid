@@ -46,6 +46,7 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(fileUpload());
+app.use(express.static('public'));
 
 // 🔹 API ROUTES
 app.use('/api/fetch', fetchCourses);
