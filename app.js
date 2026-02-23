@@ -38,6 +38,7 @@ const fileUpload = require('express-fileupload');
 const fetchCourses = require('./routes/fetchCourses');
 const fetchWorkshops = require('./routes/fetchWorkshops');
 const fetchProject = require('./routes/fetchProject');
+const fetchInternship = require('./routes/fetchInternship');
 
 const app = express();
 
@@ -52,6 +53,7 @@ app.use(express.static('public'));
 app.use('/api/fetch', fetchCourses);
 app.use('/api/workshop', fetchWorkshops);
 app.use('/api/project',fetchProject);
+app.use('/api/internship', fetchInternship);
 
 // 🔹 HEALTH CHECK (Railway needs this)
 // app.get('/health', (req, res) => {
