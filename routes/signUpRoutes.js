@@ -7,7 +7,7 @@ router.post('/signup', (req, res) => {
   const { name, email, phone,college,password } = req.body;
 
   // Insert into MySQL
-  const query = 'INSERT INTO students (name, email, phoneno, college, password) VALUES (?, ?, ?, ?, ?)';
+  const query = 'INSERT INTO students (name, email, phone, college, password) VALUES (?, ?, ?, ?, ?)';
   db.query(query, [name, email, phone, college, password], (err, result) => {
     if (err) {
       console.error(err);
