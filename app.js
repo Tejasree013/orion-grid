@@ -35,6 +35,9 @@ const cors = require('cors');
 const fileUpload = require('express-fileupload');
 
 // 🔹 IMPORT ROUTES
+const loginStudentRoute = require('./routes/loginStudentRoute');
+const facultyLoginRoute = require('./routes/facultyLoginRoute');
+const signUpRoutes = require('./routes/signUpRoutes');
 const fetchCourses = require('./routes/fetchCourses');
 const fetchWorkshops = require('./routes/fetchWorkshops');
 const fetchProject = require('./routes/fetchProject');
@@ -54,6 +57,9 @@ app.use('/api/fetch', fetchCourses);
 app.use('/api/workshop', fetchWorkshops);
 app.use('/api/project',fetchProject);
 app.use('/api/internship',fetchInternships);
+app.use('/api', loginStudentRoute);
+app.use('/api', signUpRoutes);
+app.use('/api/faculty', facultyLoginRoute);
 
 // 🔹 HEALTH CHECK (Railway needs this)
 // app.get('/health', (req, res) => {

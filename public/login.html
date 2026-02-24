@@ -302,10 +302,16 @@ document.getElementById('loginForm').addEventListener('submit', async function (
     const password = document.getElementById('password2').value;
 
     let url;
+    // if (email.endsWith('@oriongrid.in')) {
+    //     url = '/api/facultyLogin/facultylogin';
+    // } else {
+    //     // url = '/api/loginStudents/studentlogin';
+    //     url = '/api/studentlogin';
+    // }
     if (email.endsWith('@oriongrid.in')) {
-        url = '/api/facultyLogin/facultylogin';
+        url = '/api/faculty/login';
     } else {
-        url = '/api/loginStudents/studentlogin';
+    url = '/api/student/login';
     }
 
     try {

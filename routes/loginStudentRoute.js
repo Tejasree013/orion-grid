@@ -39,7 +39,7 @@ const express = require('express');
 const db = require('../config/dbConfig');
 const router = express.Router();   // 🔴 THIS LINE WAS MISSING
 
-router.post('/studentlogin', (req, res) => {
+router.post('/login', (req, res) => {
   const { email, password } = req.body;
 
   const query = 'SELECT name FROM students WHERE email = ? AND password = ?';
