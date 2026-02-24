@@ -57,7 +57,8 @@ app.use('/api/fetch', fetchCourses);
 app.use('/api/workshop', fetchWorkshops);
 app.use('/api/project',fetchProject);
 app.use('/api/internship',fetchInternships);
-app.use('/api', loginStudentRoute);
+// app.use('/api', loginStudentRoute);
+app.use('/api/student', loginStudentRoute);
 app.use('/api', signUpRoutes);
 app.use('/api/faculty', facultyLoginRoute);
 
